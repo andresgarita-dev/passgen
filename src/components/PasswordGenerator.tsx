@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 
 function PasswordGenerator(
     {dummy, length, includeSymbols, includeNumbers, includeLowercase, includeUppercase, returnPass}:
