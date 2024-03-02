@@ -1,4 +1,4 @@
-import {useCallback} from 'react'
+import {useState, useCallback} from 'react'
 import PasswordGenerator from './PasswordGenerator.tsx'
 import NavBar from './ui/NavBar.tsx'
 import Footer from './ui/Footer.tsx'

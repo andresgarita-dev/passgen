@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import {useState, useEffect} from 'react'
 
 function PasswordGenerator(
     {dummy, length, includeSymbols, includeNumbers, includeLowercase, includeUppercase, returnPass}:
@@ -27,7 +27,7 @@ function PasswordGenerator(
             }
             returnPass?.(generatedPassword);
 
-            //return generatedPassword;
+            return generatedPassword;
         }
 
         // Generate the password when the component mounts or when any of the dependency props change
