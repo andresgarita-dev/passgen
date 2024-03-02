@@ -1,0 +1,5 @@
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the root div takes up the full height of the viewport */
+}
