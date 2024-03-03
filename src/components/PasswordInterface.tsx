@@ -15,39 +15,52 @@ function PasswordInterfaz(){
     const [copied, setCopied] = useState(false);
     const onCopy = useCallback(() => {
         setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
+            }, 2000);
         }, [])
+    const shouldRenderPasswordGenerator = includeSymbols || includeNumbers || includeLowercase || includeUppercase;
     
     return (
         <>
         <NavBar />
         <main className="flex-shrink-0">
             <div className="container">
-                
-                
-                <h1 className="mt-5">Generador de contraseñas</h1>
-                <p className="lead">Simple generador de contraseñas</p>
+                <div className="row">
+                    <div className="col-md-6 mx-auto mt-5">
+                        <div className="card bg-light border-0 shadow">
+                            <div className="card-body">
+                                <h2 className="card-title">Generador de contraseñas</h2>
 
-                <p className="lead">Longitud {length}: <input type="range" min="4" max="50" value={length} onChange={(ev) => setLength(ev.target.valueAsNumber)} /> </p>
-                <p className="lead">Incluir símbolos: <input type="checkbox" checked={includeSymbols} onChange={(ev) => setIncludeSymbols(ev.target.checked)} /> </p>
-                <p className="lead">Incluir números: <input type="checkbox" checked={includeNumbers} onChange={(ev) => setIncludeNumbers(ev.target.checked)} /></p>
-                <p className="lead">Incluir minúsculas: <input type="checkbox" checked={includeLowercase} onChange={(ev) => setIncludeLowercase(ev.target.checked)} /></p>
-                <p className="lead">Incluir mayúsculas: <input type="checkbox" checked={includeUppercase} onChange={(ev) => setIncludeUppercase(ev.target.checked)} /></p>
-                <p className="lead"><button className="btn btn-primary" onClick={() => setDummy((k) => k + 1)}>Generar Contraseña</button></p>
-                <PasswordGenerator
-                    dummy={dummy}
-                    length={length}
-                    includeSymbols={includeSymbols}
-                    includeNumbers={includeNumbers}
-                    includeLowercase={includeLowercase}
-                    includeUppercase={includeUppercase}
-                    returnPass={(p:string) => setPassword(p)}
-                />
-                <div className="alert alert-primary" role="alert">
-                    {password}
+                                <p className="lead">Longitud {length}: <input type="range" min="4" max="50" value={length} onChange={(ev) => setLength(ev.target.valueAsNumber)} /> </p>
+                                <p className="lead">Incluir símbolos: <input type="checkbox" checked={includeSymbols} onChange={(ev) => setIncludeSymbols(ev.target.checked)} /> </p>
+                                <p className="lead">Incluir números: <input type="checkbox" checked={includeNumbers} onChange={(ev) => setIncludeNumbers(ev.target.checked)} /></p>
+                                <p className="lead">Incluir minúsculas: <input type="checkbox" checked={includeLowercase} onChange={(ev) => setIncludeLowercase(ev.target.checked)} /></p>
+                                <p className="lead">Incluir mayúsculas: <input type="checkbox" checked={includeUppercase} onChange={(ev) => setIncludeUppercase(ev.target.checked)} /></p>
+                                {shouldRenderPasswordGenerator && (<p className="lead"><button className="btn btn-primary" onClick={() => setDummy((k) => k + 1)}>Generar Contraseña</button></p>)}
+                                <PasswordGenerator
+                                    dummy={dummy}
+                                    length={length}
+                                    includeSymbols={includeSymbols}
+                                    includeNumbers={includeNumbers}
+                                    includeLowercase={includeLowercase}
+                                    includeUppercase={includeUppercase}
+                                    returnPass={(p:string) => setPassword(p)}
+                                />
+                                <div className="card">
+                                    <div className="card-body">
+                                        <pre>
+                                            <code className="text-danger fw-bold fs-5">{password}</code>
+                                        </pre>
+                                        <CopyToClipboard text={password} onCopy={onCopy}>
+                                            <button className="btn btn-primary">{copied ? 'Copiado!' : 'Copiar'}</button>
+                                        </CopyToClipboard>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <CopyToClipboard onCopy={onCopy} text={password}>
-                    <button>Copiar</button>
-                </CopyToClipboard>
             </div>
         </main>
         
