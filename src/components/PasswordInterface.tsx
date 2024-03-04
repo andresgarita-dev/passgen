@@ -27,16 +27,16 @@ function PasswordInterfaz(){
         <main className="flex-shrink-0">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-6 mx-auto mt-5">
+                    <div className="col-md-6 mx-auto pt-5">
                         <div className="card bg-light border-0 shadow">
                             <div className="card-body">
                                 <h2 className="card-title">Generador de contraseñas</h2>
 
-                                <p className="lead">Longitud {length}: <input type="range" min="4" max="50" value={length} onChange={(ev) => setLength(ev.target.valueAsNumber)} /> </p>
-                                <p className="lead">Incluir símbolos: <input type="checkbox" checked={includeSymbols} onChange={(ev) => setIncludeSymbols(ev.target.checked)} /> </p>
-                                <p className="lead">Incluir números: <input type="checkbox" checked={includeNumbers} onChange={(ev) => setIncludeNumbers(ev.target.checked)} /></p>
-                                <p className="lead">Incluir minúsculas: <input type="checkbox" checked={includeLowercase} onChange={(ev) => setIncludeLowercase(ev.target.checked)} /></p>
-                                <p className="lead">Incluir mayúsculas: <input type="checkbox" checked={includeUppercase} onChange={(ev) => setIncludeUppercase(ev.target.checked)} /></p>
+                                <p className="lead"><input type="number" className="w-25" min="4" max="50" value={length} onChange={(ev) => setLength(ev.target.valueAsNumber)} /> Longitud</p>
+                                <p className="lead"><input type="checkbox" checked={includeSymbols} onChange={(ev) => setIncludeSymbols(ev.target.checked)} /> Símbolos</p>
+                                <p className="lead"><input type="checkbox" checked={includeNumbers} onChange={(ev) => setIncludeNumbers(ev.target.checked)} /> Números</p>
+                                <p className="lead"><input type="checkbox" checked={includeLowercase} onChange={(ev) => setIncludeLowercase(ev.target.checked)} /> Minúsculas</p>
+                                <p className="lead"><input type="checkbox" checked={includeUppercase} onChange={(ev) => setIncludeUppercase(ev.target.checked)} /> Mayúsculas</p>
                                 {shouldRenderPasswordGenerator && (<p className="lead"><button className="btn btn-primary" onClick={() => setDummy((k) => k + 1)}>Generar Contraseña</button></p>)}
                                 <PasswordGenerator
                                     dummy={dummy}

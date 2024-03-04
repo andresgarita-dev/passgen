@@ -5,7 +5,7 @@ function Footer(){
 
         <footer className="footer mt-auto py-3 bg-body-tertiary">
             <div className="container">
-                <span className="text-body-secondary">Creado por Andrés Garita. {new Date().getFullYear()}. Ver código fuente de esta página <a target="_blank" href="https://github.com/andresgarita-dev/passgen">aquí</a></span>
+                <span className="text-body-secondary">Creado por Andrés Garita {new Date().getFullYear()}. Ver código fuente de esta página <a target="_blank" href="https://github.com/andresgarita-dev/passgen">aquí</a></span>
             </div>
         </footer>
         
