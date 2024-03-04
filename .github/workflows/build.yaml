@@ -25,7 +25,7 @@ jobs:
         git config --global user.name "GitHub Actions"
         git checkout -B site  # Create or switch to the site branch
         git rm -r .  # Remove all existing files
-        git checkout main -- dist  # Copy the files from dist directory in main branch
+        git checkout master -- dist  # Copy the files from dist directory in main branch
         mv dist/* .  # Move files from dist to root directory
         rm -rf dist  # Remove the dist directory
         git add .
