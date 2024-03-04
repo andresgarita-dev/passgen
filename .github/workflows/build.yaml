@@ -1,0 +1,33 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build
+
+    - name: Deploy to site branch
+      run: |
+        git config --global user.email "actions@github.com"
+        git config --global user.name "GitHub Actions"
+        git checkout -B site  # Create or switch to the site branch
+        git rm -r .  # Remove all existing files
+        git checkout main -- dist  # Copy the files from dist directory in main branch
+        mv dist/* .  # Move files from dist to root directory
+        rm -rf dist  # Remove the dist directory
+        git add .
+        git commit -m "Build and deploy"
+        git push origin site
