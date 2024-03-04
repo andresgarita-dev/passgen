@@ -28,6 +28,7 @@ jobs:
         git checkout master -- dist  # Copy the files from dist directory in main branch
         mv dist/* .  # Move files from dist to root directory
         rm -rf dist  # Remove the dist directory
+        rm -rf node_modules # remove the node_modules directory
         git add .
         git commit -m "Build and deploy"
         git push origin site
